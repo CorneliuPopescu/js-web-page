@@ -65,7 +65,16 @@
       <div class="col-md-6">
         <div class="card">
           <div class="card-body">
-            <button id="resetButton" class="btn btn-outline-secondary mb-3">Reiniciar tabla</button>
+            <div class="d-flex align-items-center mb-3">
+              <button id="resetButton" class="btn btn-outline-secondary align-self-stretch">Reiniciar tabla</button>
+              <div class="flex-grow-1 ms-3 d-flex">
+                <select id="filterID" class="form-select me-2 flex-grow-1" style="max-width: 130px">
+                  <option value="Todos">Todos</option>
+                </select>
+                <input type="text" id="filterName" class="form-control flex-grow-1" style="max-width: 200px"
+                  placeholder="Buscar por nombre">
+              </div>
+            </div>
             <table class="table">
               <thead>
                 <tr>
@@ -73,7 +82,7 @@
                   <th>Tipo</th>
                   <th>Nombre</th>
                   <th>Año</th>
-                  <th>Cantidad</th> 
+                  <th>Cantidad</th>
                 </tr>
               </thead>
               <tbody id="idTableBody">

@@ -1,9 +1,10 @@
-import { addRow, resetTable } from './functions.js';
+import { addRow, filterTable, resetTable } from './functions.js';
 
 const idForm = document.getElementById('idForm');
 const idTableBody = document.getElementById('idTableBody');
 const subtitle = document.getElementById('subtitle');
 const resetButton = document.getElementById('resetButton');
+const filterID = document.getElementById('filterID');
 
 idForm.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -35,6 +36,12 @@ idForm.addEventListener('submit', (event) => {
         nombreInput.value = ''; // Clear the "Nombre" input field
         añoInput.value = ''; // Clear the "Año" input field
         cantidadInput.value = ''; // Clear the "Cantidad" input field
+
+        // Add new option to filterID
+        const newOption = document.createElement('option');
+        newOption.value = idValue;
+        newOption.textContent = idValue;
+        filterID.appendChild(newOption);
     } else {
         if (idExists) {
             alert('ID repetido. Introduzca un ID único.');
@@ -46,4 +53,10 @@ idForm.addEventListener('submit', (event) => {
 
 resetButton.addEventListener('click', () => {
     resetTable(idTableBody, subtitle);
+});
+
+// Add event listener for filterID
+filterID.addEventListener('change', () => {
+    const selectedID = filterID.value;
+    filterTable(selectedID);
 });
