@@ -33,10 +33,10 @@ idForm.addEventListener('submit', (event) => {
     if (!idExists && id > 0 && idValue.length <= 8 && /^\d+$/.test(idValue)) {
         addRow(idTableBody, idValue, tipoValue, nombreValue, añoValue, cantidadValue, subtitle);
         idInput.value = '';
-        tipoSelect.selectedIndex = 0; // Reset Tipo dropdown
-        nombreInput.value = ''; // Clear the "Nombre" input field
-        añoInput.value = ''; // Clear the "Año" input field
-        cantidadInput.value = ''; // Clear the "Cantidad" input field
+        tipoSelect.selectedIndex = 0;
+        nombreInput.value = '';
+        añoInput.value = '';
+        cantidadInput.value = '';
 
         // Add new option to filterID
         const newOption = document.createElement('option');
@@ -56,7 +56,6 @@ resetButton.addEventListener('click', () => {
     resetTable(idTableBody, subtitle);
 });
 
-// Add event listener for filterID
 filterID.addEventListener('change', () => {
     const selectedID = filterID.value;
     filterTable(selectedID);
@@ -66,7 +65,7 @@ filterName.addEventListener('input', () => {
     const filterValue = filterName.value.toLowerCase();
     const rows = idTableBody.getElementsByTagName('tr');
     for (let i = 0; i < rows.length; i++) {
-        const name = rows[i].cells[2].textContent.toLowerCase(); // Assuming "Name" is the third column (index 2)
+        const name = rows[i].cells[2].textContent.toLowerCase();
         if (name.includes(filterValue)) {
             rows[i].style.display = '';
         } else {

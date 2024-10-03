@@ -36,10 +36,9 @@ export function resetTable(idTableBody, subtitle) { // Added 'export'
     idTableBody.innerHTML = '';
     subtitle.textContent = '0 registros';
 
-    // Reset filterID dropdown
     const filterID = document.getElementById('filterID');
+    const filterName = document.getElementById('filterName');
     filterID.innerHTML = '<option value="Todos">Todos</option>';
 
-    // Clear filterName input
     filterName.value = '';
 }
