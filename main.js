@@ -5,6 +5,7 @@ const idTableBody = document.getElementById('idTableBody');
 const subtitle = document.getElementById('subtitle');
 const resetButton = document.getElementById('resetButton');
 const filterID = document.getElementById('filterID');
+const filterName = document.getElementById('filterName');
 
 idForm.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -59,4 +60,17 @@ resetButton.addEventListener('click', () => {
 filterID.addEventListener('change', () => {
     const selectedID = filterID.value;
     filterTable(selectedID);
+});
+
+filterName.addEventListener('input', () => {
+    const filterValue = filterName.value.toLowerCase();
+    const rows = idTableBody.getElementsByTagName('tr');
+    for (let i = 0; i < rows.length; i++) {
+        const name = rows[i].cells[2].textContent.toLowerCase(); // Assuming "Name" is the third column (index 2)
+        if (name.includes(filterValue)) {
+            rows[i].style.display = '';
+        } else {
+            rows[i].style.display = 'none';
+        }
+    }
 });
